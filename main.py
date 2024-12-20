@@ -1,5 +1,6 @@
 from textSummarizer.pipeline.data_ingestion import DataIngestionTrainingPipeline
 from textSummarizer.pipeline.data_validation import DataValidationTrainingPipeline
+from textSummarizer.pipeline.data_transformation import DataTransformationTrainingPipeline
 from textSummarizer.logging import logger
 
 try:
@@ -18,4 +19,13 @@ try:
     logger.info(f"Data validation pipeline completed successfully.")
 except Exception as e:
     logger.error(f"An error occurred during data validation pipeline: {e}")
+    raise e
+
+try:
+    logger.info(f"Starting data transformation pipeline...")
+    data_transforamtion = DataTransformationTrainingPipeline()
+    data_transforamtion.main()
+    logger.info(f"Data transformation pipeline completed successfully.")
+except Exception as e:
+    logger.error(f"An error occurred during data transformation pipeline: {e}")
     raise e
