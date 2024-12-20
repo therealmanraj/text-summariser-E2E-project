@@ -1,31 +1,43 @@
 from textSummarizer.pipeline.data_ingestion import DataIngestionTrainingPipeline
 from textSummarizer.pipeline.data_validation import DataValidationTrainingPipeline
 from textSummarizer.pipeline.data_transformation import DataTransformationTrainingPipeline
+from textSummarizer.pipeline.model_training import ModelTrainingPipeline
 from textSummarizer.logging import logger
 
-try:
-    logger.info(f"Starting data ingestion pipeline...")
-    data_ingestion = DataIngestionTrainingPipeline()
-    data_ingestion.main()
-    logger.info(f"Data ingestion pipeline completed successfully.")
-except Exception as e:
-    logger.error(f"An error occurred during data ingestion pipeline: {e}")
-    raise e
+if __name__ == "__main__":
+    
+    try:
+        logger.info(f"Starting data ingestion...")
+        data_ingestion = DataIngestionTrainingPipeline()
+        data_ingestion.main()
+        logger.info(f"Data ingestion completed successfully.")
+    except Exception as e:
+        logger.error(f"An error occurred during data ingestion: {e}")
+        raise e
 
-try:
-    logger.info(f"Starting data validation pipeline...")
-    data_validation = DataValidationTrainingPipeline()
-    data_validation.main()
-    logger.info(f"Data validation pipeline completed successfully.")
-except Exception as e:
-    logger.error(f"An error occurred during data validation pipeline: {e}")
-    raise e
+    try:
+        logger.info(f"Starting data validation...")
+        data_validation = DataValidationTrainingPipeline()
+        data_validation.main()
+        logger.info(f"Data validation completed successfully.")
+    except Exception as e:
+        logger.error(f"An error occurred during data validation: {e}")
+        raise e
 
-try:
-    logger.info(f"Starting data transformation pipeline...")
-    data_transforamtion = DataTransformationTrainingPipeline()
-    data_transforamtion.main()
-    logger.info(f"Data transformation pipeline completed successfully.")
-except Exception as e:
-    logger.error(f"An error occurred during data transformation pipeline: {e}")
-    raise e
+    try:
+        logger.info(f"Starting data transformation ...")
+        data_transforamtion = DataTransformationTrainingPipeline()
+        data_transforamtion.main()
+        logger.info(f"Data transformation completed successfully.")
+    except Exception as e:
+        logger.error(f"An error occurred during data transformation: {e}")
+        raise e
+
+    try:
+        logger.info(f"Starting model training...")
+        model_training = ModelTrainingPipeline()
+        model_training.main()
+        logger.info(f"Model training completed successfully.")
+    except Exception as e:
+        logger.error(f"An error occurred during model training: {e}")
+        raise e

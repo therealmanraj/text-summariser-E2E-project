@@ -1,6 +1,6 @@
 from textSummarizer.constants import *
 from textSummarizer.utils.common import read_yaml, create_directories
-from textSummarizer.entity import (DataIngestionConfig,DataValidationConfig,DataTransformationConfig)
+from textSummarizer.entity import (DataIngestionConfig,DataValidationConfig,DataTransformationConfig,ModelTrainingConfig)
 
 class ConfigurationManager:
     def __init__(self, config_filepath = CONFIG_FILE_PATH, params_filepath = PARAMS_FILE_PATH):
@@ -39,3 +39,26 @@ class ConfigurationManager:
             DATA_PATH=self.config.data_transformation.DATA_PATH,
             TOKENIZER_NAME=Path(self.config.data_transformation.TOKENIZER_NAME)
         )
+        
+    def get_model_training_config(self) -> ModelTrainingConfig:
+        config = self.config.model_training
+        params = self.params.TrainingArguments
+
+        create_directories([config.root_dir])
+
+        model_training_config = ModelTrainingConfig(
+            root_dir=config.root_dir,
+            data_path=config.DATA_PATH,
+            model_ckpt = config.MODEL_CKPT,
+            num_train_epochs = params.num_train_epochs,
+            warmup_steps = params.warmup_steps,
+            per_device_train_batch_size = params.per_device_train_batch_size,
+            weight_decay = params.weight_decay,
+            logging_steps = params.logging_steps,
+            evaluation_strategy = params.evaluation_strategy,
+            eval_steps = params.eval_steps,
+            save_steps = params.save_steps,
+            gradient_accumulation_steps = params.gradient_accumulation_steps
+        )
+
+        return model_training_config

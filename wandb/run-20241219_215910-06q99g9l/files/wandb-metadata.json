@@ -1,0 +1,35 @@
+{
+  "os":  "macOS-14.5-x86_64-i386-64bit",
+  "python":  "CPython 3.12.0",
+  "startedAt":  "2024-12-20T05:59:10.717445Z",
+  "program":  "/Users/manraj/Documents/GitHub/text-summariser-E2E-project/main.py",
+  "codePath":  "main.py",
+  "git":  {
+    "remote":  "https://github.com/therealmanraj/text-summariser-E2E-project.git",
+    "commit":  "7d5789ee06107d87b0aed03781492149cdc4ba4b"
+  },
+  "email":  "singhmanraj8@gmail.com",
+  "root":  "/Users/manraj/Documents/GitHub/text-summariser-E2E-project",
+  "host":  "Manrajs-MacBook-Pro.local",
+  "executable":  "/Users/manraj/Documents/GitHub/text-summariser-E2E-project/venv/bin/python",
+  "codePathLocal":  "main.py",
+  "cpu_count":  4,
+  "cpu_count_logical":  8,
+  "disk":  {
+    "/":  {
+      "total":  "121018208256",
+      "used":  "111654572032"
+    },
+    "/System/Volumes/Data":  {
+      "total":  "121018208256",
+      "used":  "111654572032"
+    }
+  },
+  "memory":  {
+    "total":  "8589934592"
+  },
+  "cpu":  {
+    "count":  4,
+    "countLogical":  8
+  }
+}
