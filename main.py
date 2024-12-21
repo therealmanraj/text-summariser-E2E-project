@@ -2,6 +2,7 @@ from textSummarizer.pipeline.data_ingestion import DataIngestionTrainingPipeline
 from textSummarizer.pipeline.data_validation import DataValidationTrainingPipeline
 from textSummarizer.pipeline.data_transformation import DataTransformationTrainingPipeline
 from textSummarizer.pipeline.model_training import ModelTrainingPipeline
+from textSummarizer.pipeline.model_evaluation import ModelEvaluationPipeline
 from textSummarizer.logging import logger
 
 if __name__ == "__main__":
@@ -40,4 +41,13 @@ if __name__ == "__main__":
         logger.info(f"Model training completed successfully.")
     except Exception as e:
         logger.error(f"An error occurred during model training: {e}")
+        raise e
+    
+    try:
+        logger.info(f"Starting model evaluation...")
+        model_evaluation = ModelEvaluationPipeline()
+        model_evaluation.main()
+        logger.info(f"Model evaluation completed successfully.")
+    except Exception as e:
+        logger.error(f"An error occurred during model evaluation: {e}")
         raise e
