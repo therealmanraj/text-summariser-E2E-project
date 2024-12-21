@@ -1,5 +1,5 @@
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
-from datasets import load_dataset, load_from_disk, load_metric
+from datasets import load_dataset, load_from_disk
 import torch
 import pandas as pd
 from tqdm import tqdm
@@ -66,9 +66,9 @@ class ModelEvaluation:
             tokenizer, batch_size = 2, column_text = 'dialogue',\
             column_summary= 'summary')
 
-        rouge_dict = dict((rn, score[rn].mid.fmeasure ) for rn in rouge_names )
+        rouge_dict = {rn: score[rn] for rn in rouge_names}
+        rouge_df = pd.DataFrame(rouge_dict, index=['pegasus'])
 
-        df = pd.DataFrame(rouge_dict, index = ['pegasus'] )
-        df.to_csv(self.config.metric_file_name, index=False)
+        rouge_df.to_csv(self.config.metric_file_name, index=False)
 
         
